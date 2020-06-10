@@ -1,26 +1,36 @@
 import colores.*
 import wollok.game.*
 
+import wollok.game.*
+
+
 class Corsa {
 	
 	var property color 	
 	var property velodidadMaxima = 150
 	var property peso = 1300
 	var property capacidad = 4
-	 	
+	 
+	var property position = game.at(4,7)
+	var property image = rojo
+
 	method pesoMotor(){}
 	method pesoInterior(){}	
 	method tieneGas(){}
 	
-	var property position = game.at (4,7)
-	var property image = "autitorojo.png"
+	method moverseALaDerecha() {self.position(self.position().right(1))}
+	method moverseALaIzq() {self.position(self.position().left(1))}
+	method moverseArriba() {self.position(self.position().up(1))}
+	method moverseAbajo() {self.position(self.position().down(1))}
 	
+	method cambiarColorA(unColor){ image = unColor}
 	
-	corsa.moverseALaDerecha()
-	keyboard.left().onPressDo{corsa.moverseALaIzq()}	
-	keyboard.up().onPressDo{corsa.moverseArriba()}
-	keyboard.down().onPressDo{corsa.moverseAbajo()}	
+	/// Registro de posiciones - Punto 4 ///
 	
+	method pasoPor(posicion){}
+	method  pasoPorFila(numero) {}
+	method  recorrioFilas(lista_de_numeros) {}
+
 }
 
 class Kwid {

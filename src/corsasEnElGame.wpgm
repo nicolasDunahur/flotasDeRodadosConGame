@@ -1,16 +1,24 @@
 import wollok.game.*
-import autos.game.*
+import autos.*
+import colores.*
 
 program corsasEnElGame {
+	
+	var corsaOriginal = new Corsa(color = rojo)
 	
 	game.title ("El Chivo")
 	game.height(10)
 	game.width(10)
-	game.addVisual(corsa)
+	game.addVisual(corsaOriginal)
 	
-	keyboard.right().onPressDo{corsa.moverseALaDerecha()}
-	keyboard.left().onPressDo{corsa.moverseALaIzq()}	
-	keyboard.up().onPressDo{corsa.moverseArriba()}
-	keyboard.down().onPressDo{corsa.moverseAbajo()}		
+	keyboard.right().onPressDo{corsaOriginal.moverseALaDerecha()}
+	keyboard.left().onPressDo{corsaOriginal.moverseALaIzq()}	
+	keyboard.up().onPressDo{corsaOriginal.moverseArriba()}
+	keyboard.down().onPressDo{corsaOriginal.moverseAbajo()}
+	
+	keyboard.r().onPressDo{corsaOriginal.cambiarColorA(rojo)}
+	keyboard.a().onPressDo{corsaOriginal.cambiarColorA(azul)}	
+	keyboard.v().onPressDo{corsaOriginal.cambiarColorA(verde)}
+			
 	game.start()
 }

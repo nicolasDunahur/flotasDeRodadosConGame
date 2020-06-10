@@ -1,22 +1,18 @@
 class Dependencia {
+	
 	var property flota = []
+	var property  registroDePedidos = []
 	var property cantEmpleados 
+		
+	method  agregarAFlota(rodado) {	flota.add(rodado)}
 	
+	method  quitarDeFlota(rodado) {	flota.remove(rodado)}
 	
-	method  agregarAFlota(rodado) {
-		flota.add(rodado)
-	}
+	method   pesoTotalFlota() {	return flota.sum({auto => auto.peso()})	}
 	
-	method  quitarDeFlota(rodado) {
-		flota.remove(rodado)
-	}
-	
-	method   pesoTotalFlota() {
-		return flota.sum({auto => auto.peso()})
-	}
 	
 	method  estaBienEquipada() {
-		return flota.len()>3 and
+		return flota.size()>3 and
 		 flota.all({auto => auto.velodidadMaxima() > 99})
 		 // o va max?
 	}
@@ -26,43 +22,36 @@ class Dependencia {
 		
 	}
 	
-	method  colorDelRodadoMasRapido() {
-		return flota.max().color()
-	}
+	method  colorDelRodadoMasRapido() {	return flota.max().color()}
 	
 	method  capacidadFaltante() {
 		return self.cantEmpleados() - flota.sum({auto => auto.capacidad()})
 	}
 	
 	method  esGrande() {
-		return flota.len()>4 and self.cantEmpleados() > 39
+		return flota.size()>4 and self.cantEmpleados() > 39
 	}
 	
-	/////////// REGISTRO DE PEDIDOS ////////////////
+	/*/////////// REGISTRO DE PEDIDOS ////////////////*/
 	
-	const property  registroDePedidos = []
+	method agregarPedido(pedido) {	registroDePedidos.add(pedido)}
 	
-	method agregarPedido(pedido) {
-		registroDePedidos.add(pedido)
-	}
-	
-	method  quitarPedido(pedido) {
-		registroDePedidos.remove(pedido)
-	}
+	method  quitarPedido(pedido) {registroDePedidos.remove(pedido)}
 	
 	method totalDePasajerosDelPedido(pedido){
 		return registroDePedidos.sum({p => p.pasajeros()})
 	}
-	/* 
+	
+	/*
 	method pedidosInsatisfechos(){
 		return registroDePedidos.filter({p => p.elAuto_PuedeHacerElPedido() == color})
 		flota.unoPorUno
-		/// devie;ve una lista nuva
+		/// devie;ve una lista nueva, como hacer para que recorra 2 listas
 		
 	}
 	*/
 	method elColor_EsIncompatible(unColor){
-		return registroDePedidos.all({p => p.coloresIncompatible()== unColor})
+		return registroDePedidos.all({p => p.colorEsIncompatible() == unColor})
 	}
 	
 	method relajarTodosLosPedidos(){

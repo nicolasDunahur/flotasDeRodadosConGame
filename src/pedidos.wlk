@@ -6,20 +6,23 @@ class Pedido {
 	var property colorEsIncompatible
 	var property velocidad = discancia/tiempoMax
 	
+	/*
 	method elAutoPuedeHacerElPedido(unAuto) {
 		return (unAuto.velocidadMaxima() - self.velocidad()).abs() > 10
 			and unAuto.capacidad() >= self.pasajeros()
-			and elColorDelAuto_EsIncompatible(unAuto)
+			and self.elColorDelAuto_EsIncompatible(unAuto)
 	}
-
+*/
 	method acelerar(){
-		self.tiempoMax() = tiempoMax - 1
+		tiempoMax = tiempoMax - 1
 	}
 	
 	method relajar(){
-		self.tiempoMax() += 1
+		tiempoMax = tiempoMax + 1
 	}
 	
 	method elColorDelAuto_EsIncompatible(unAuto){
-		return self.colorEsIncompatible == unAuto.color()
+		return colorEsIncompatible == unAuto.color()
 	}
+}
+	
